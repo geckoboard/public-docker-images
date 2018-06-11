@@ -1,5 +1,5 @@
 NAME=ruby-golang
-GO_VERSION=1.8.3
+GO_VERSION=1.9.7
 RUBY_VERSION=2.4
 RELEASE=xenial
 
