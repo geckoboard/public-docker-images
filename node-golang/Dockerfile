@@ -15,5 +15,7 @@ RUN set -eux; \
 	go version
 
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+RUN apt update
+RUN apt install -y git
 
 CMD [ "node" ]
