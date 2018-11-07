@@ -16,6 +16,12 @@ RUN set -eux; \
 
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 RUN apt update
-RUN apt install -y git make
+RUN apt install -y git make gcc
+
+# Install cfssl dependencies so we don't spend 30secs
+# building them each time
+RUN go get -u github.com/cloudflare/cfssl/cmd/cfssl
+RUN go get -u github.com/cloudflare/cfssl/cmd/cfssljson
+RUN go get -u github.com/cloudflare/cfssl/cmd/mkbundle
 
 CMD [ "node" ]
