@@ -3,6 +3,7 @@ VERSION=1.0
 POSTGRES94_IMAGE=postgres9.4-ssl
 POSTGRES95_IMAGE=postgres9.5-ssl
 POSTGRES96_IMAGE=postgres9.6-ssl
+POSTGRES106_IMAGE=postgres10.6-ssl
 
 build-94:
 	docker build -t ${POSTGRES94_IMAGE} 9.4/
@@ -21,6 +22,12 @@ build-96:
 	docker tag ${POSTGRES96_IMAGE} geckoboard/${POSTGRES96_IMAGE}:${VERSION}
 release-96:
 	docker push geckoboard/${POSTGRES96_IMAGE}:${VERSION}
+
+build-106:
+	docker build -t ${POSTGRES106_IMAGE} 10.6/
+	docker tag ${POSTGRES106_IMAGE} geckoboard/${POSTGRES106_IMAGE}:${VERSION}
+release-106:
+	docker push geckoboard/${POSTGRES106_IMAGE}:${VERSION}
 
 
 build-all: build-94 build-95
